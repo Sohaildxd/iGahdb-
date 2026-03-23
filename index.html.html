@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Priya Sharma – General Physician & Family Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F4;
+    --warm-white: #FFFFFF;
+    --dark: #1A1A18;
+    --muted: #6B6A65;
+    --accent: #2E6B5E;
+    --accent-light: #E8F2EF;
+    --accent-mid: #4A8C7E;
+    --gold: #B8860B;
+    --border: #E8E5DF;
+    --section-gap: 96px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--dark); text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 400; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    padding: 10px 24px; border-radius: 100px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent-mid); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 68px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 56px 80px 80px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 1px; background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5vw, 64px);
+    font-weight: 500; line-height: 1.15;
+    color: var(--dark); margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-desc {
+    font-size: 16px; color: var(--muted); line-height: 1.8;
+    max-width: 420px; margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 14px 32px; border-radius: 100px;
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--dark);
+    padding: 14px 32px; border-radius: 100px;
+    font-size: 15px; font-weight: 400; text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 500; color: var(--dark);
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-container {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  /* Doctor illustration - geometric/minimal art */
+  .doctor-visual {
+    width: 380px; height: 480px; position: relative;
+  }
+  .hero-badge {
+    position: absolute; bottom: 48px; left: 48px;
+    background: white; border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .badge-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .badge-text-main { font-weight: 500; font-size: 15px; }
+  .badge-text-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  .hero-badge2 {
+    position: absolute; top: 80px; right: 48px;
+    background: var(--accent); border-radius: 12px;
+    padding: 14px 20px; color: white;
+  }
+  .badge2-top { font-size: 11px; opacity: 0.8; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge2-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500; line-height: 1;
+    margin: 4px 0 2px;
+  }
+  .badge2-sub { font-size: 12px; opacity: 0.7; }
+
+  /* ── SERVICES ── */
+  section { padding: var(--section-gap) 80px; }
+
+  .section-label {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 500; line-height: 1.2;
+    margin-bottom: 56px; max-width: 520px;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden;
+  }
+  .service-card {
+    background: white; padding: 40px 36px;
+    transition: background 0.3s;
+    cursor: default;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .service-card:nth-child(3n) { border-right: none; }
+  .service-card:nth-child(n+4) { border-bottom: none; }
+  .service-card:hover { background: var(--accent-light); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 20px;
+    transition: background 0.3s;
+  }
+  .service-card:hover .service-icon { background: white; }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; margin-bottom: 10px;
+  }
+  .service-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--dark); color: white;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; padding: var(--section-gap) 80px;
+  }
+  .about-left .section-label { color: var(--accent-mid); }
+  .about-left .section-label::before { background: var(--accent-mid); }
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px); font-weight: 500;
+    line-height: 1.2; margin-bottom: 24px;
+  }
+  .about-title em { font-style: italic; color: var(--accent-mid); }
+  .about-desc { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 32px; }
+  .credentials { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+  .credential {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px; border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .cred-icon { font-size: 20px; margin-top: 2px; }
+  .cred-name { font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+  .cred-detail { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  .about-right { display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-style: italic; font-weight: 400;
+    line-height: 1.5; color: rgba(255,255,255,0.9);
+    border-left: 3px solid var(--accent-mid);
+    padding-left: 28px;
+  }
+  .about-quote-attr { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+
+  .about-expertise { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .exp-tag {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 14px 18px;
+    font-size: 14px; color: rgba(255,255,255,0.75);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .exp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mid); flex-shrink: 0; }
+
+  /* ── TIMINGS ── */
+  .timings-section { background: white; }
+  .timings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .timing-table { width: 100%; border-collapse: collapse; }
+  .timing-table th {
+    text-align: left; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); padding: 0 0 16px;
+  }
+  .timing-table td {
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .timing-table td:last-child { text-align: right; color: var(--accent); font-weight: 500; }
+  .timing-table tr:last-child td { border-bottom: none; }
+  .closed { color: #cc4444 !important; }
+
+  .contact-card {
+    background: var(--accent); border-radius: 20px;
+    padding: 40px; color: white;
+  }
+  .contact-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500; margin-bottom: 24px;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 20px; font-size: 15px;
+  }
+  .contact-item-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-label { font-size: 12px; opacity: 0.7; margin-bottom: 2px; }
+  .contact-value { font-weight: 500; }
+  .contact-map-placeholder {
+    margin-top: 24px; height: 120px; border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; opacity: 0.7; letter-spacing: 0.05em;
+    border: 1px dashed rgba(255,255,255,0.3);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: white; border-radius: 20px;
+    padding: 32px; border: 1px solid var(--border);
+  }
+  .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 20px; }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic; line-height: 1.6;
+    color: var(--dark); margin-bottom: 24px;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 500; color: var(--accent);
+  }
+  .author-name { font-size: 14px; font-weight: 500; }
+  .author-detail { font-size: 12px; color: var(--muted); }
+
+  /* ── BOOK APPOINTMENT ── */
+  .book-section {
+    background: var(--accent); color: white;
+    text-align: center; padding: 80px;
+  }
+  .book-section .section-label { justify-content: center; color: rgba(255,255,255,0.7); }
+  .book-section .section-label::before { background: rgba(255,255,255,0.4); }
+  .book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px); font-weight: 500;
+    line-height: 1.2; margin-bottom: 20px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .book-desc { font-size: 16px; opacity: 0.8; max-width: 440px; margin: 0 auto 40px; }
+  .book-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: white; color: var(--accent);
+    padding: 16px 40px; border-radius: 100px;
+    font-size: 16px; font-weight: 500; text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.5); color: white;
+    padding: 16px 40px; border-radius: 100px;
+    font-size: 16px; font-weight: 400; text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: white; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    padding: 48px 80px; display: flex;
+    align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: white; font-weight: 500;
+  }
+  .footer-note { font-size: 13px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; }
+  .footer-links a:hover { color: white; }
+
+  /* ── FLOATING WHATSAPP ── */
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center;
+    justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none; font-size: 26px;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 32px 48px; }
+    .hero-right { min-height: 300px; }
+    section { padding: 64px 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; }
+    .about-section { grid-template-columns: 1fr; padding: 64px 32px; }
+    .timings-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .book-section { padding: 64px 32px; }
+    footer { padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Dr. Priya Sharma</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#timings">Timings</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding: 0;">
+  <div class="hero-left">
+    <span class="hero-eyebrow fade-up">Certified Family Physician · Est. 2009</span>
+    <h1 class="hero-title fade-up delay-1">
+      Trusted Care for <em>Every</em> Stage of Life
+    </h1>
+    <p class="hero-desc fade-up delay-2">
+      Compassionate, evidence-based medicine for families in Hyderabad. Walk-in consultations available daily. Your health is our priority.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#book" class="btn-primary">Book Appointment</a>
+      <a href="tel:+919876543210" class="btn-outline">📞 Call Clinic</a>
+    </div>
+    <div class="hero-stats fade-up delay-3">
+      <div>
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">12K+</div>
+        <div class="stat-label">Patients treated</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Patient rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:48px;">
+      <!-- Abstract doctor illustration using CSS/SVG -->
+      <svg viewBox="0 0 340 420" width="320" style="max-height:400px">
+        <!-- Background circle -->
+        <circle cx="170" cy="210" r="165" fill="#D6EDE8" opacity="0.6"/>
+        <!-- Doctor body -->
+        <rect x="110" y="200" width="120" height="150" rx="20" fill="#2E6B5E"/>
+        <!-- White coat -->
+        <rect x="118" y="205" width="104" height="142" rx="16" fill="white" opacity="0.15"/>
+        <!-- Stethoscope -->
+        <path d="M145 220 Q130 240 135 260 Q140 280 160 282 Q180 284 185 260 Q190 240 175 220" fill="none" stroke="#A8D5CC" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="160" cy="282" r="8" fill="#A8D5CC"/>
+        <!-- Head -->
+        <ellipse cx="170" cy="170" rx="44" ry="48" fill="#F5C9A0"/>
+        <!-- Hair -->
+        <ellipse cx="170" cy="130" rx="44" ry="20" fill="#2C1810"/>
+        <rect x="126" y="130" width="88" height="26" fill="#2C1810"/>
+        <!-- Face features -->
+        <circle cx="155" cy="165" r="4" fill="#2C1810"/>
+        <circle cx="185" cy="165" r="4" fill="#2C1810"/>
+        <path d="M155 185 Q170 195 185 185" fill="none" stroke="#C68642" stroke-width="2" stroke-linecap="round"/>
+        <!-- Stethoscope earpieces -->
+        <circle cx="145" cy="220" r="5" fill="#A8D5CC"/>
+        <circle cx="175" cy="220" r="5" fill="#A8D5CC"/>
+        <!-- Pocket + pen -->
+        <rect x="145" y="240" width="30" height="20" rx="4" fill="rgba(255,255,255,0.2)"/>
+        <line x1="158" y1="238" x2="158" y2="252" stroke="#B8E0D8" stroke-width="2" stroke-linecap="round"/>
+        <!-- Clipboard -->
+        <rect x="195" y="230" width="46" height="60" rx="6" fill="white" opacity="0.9"/>
+        <rect x="208" y="222" width="20" height="14" rx="4" fill="#2E6B5E" opacity="0.7"/>
+        <line x1="202" y1="250" x2="234" y2="250" stroke="#CCC" stroke-width="1.5"/>
+        <line x1="202" y1="261" x2="234" y2="261" stroke="#CCC" stroke-width="1.5"/>
+        <line x1="202" y1="272" x2="225" y2="272" stroke="#CCC" stroke-width="1.5"/>
+        <!-- MBBS tag -->
+        <rect x="130" y="205" width="50" height="18" rx="4" fill="white" opacity="0.9"/>
+        <text x="155" y="218" text-anchor="middle" font-size="9" font-family="DM Sans,sans-serif" font-weight="600" fill="#2E6B5E">MBBS · MD</text>
+        <!-- Cross symbol -->
+        <g opacity="0.25">
+          <rect x="52" y="60" width="6" height="20" rx="3" fill="#2E6B5E"/>
+          <rect x="46" y="66" width="18" height="6" rx="3" fill="#2E6B5E"/>
+        </g>
+        <g opacity="0.2">
+          <rect x="278" y="320" width="6" height="20" rx="3" fill="#2E6B5E"/>
+          <rect x="272" y="326" width="18" height="6" rx="3" fill="#2E6B5E"/>
+        </g>
+      </svg>
+
+      <!-- Floating badges -->
+      <div class="hero-badge">
+        <div class="badge-icon">🏥</div>
+        <div>
+          <div class="badge-text-main">Walk-ins Welcome</div>
+          <div class="badge-text-sub">No appointment needed</div>
+        </div>
+      </div>
+      <div class="hero-badge2">
+        <div class="badge2-top">Today's Slots</div>
+        <div class="badge2-num">8</div>
+        <div class="badge2-sub">available now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Comprehensive Care, <em>Close to Home</em></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🩺</div>
+      <div class="service-name">General Consultation</div>
+      <p class="service-desc">Thorough assessment for fever, infections, pain, fatigue, and all common illnesses. Same-day results whenever possible.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <div class="service-name">Family Health</div>
+      <p class="service-desc">Routine check-ups, vaccinations, and preventive care for patients of all ages — from newborns to seniors.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🩸</div>
+      <div class="service-name">Diagnostics & Lab</div>
+      <p class="service-desc">On-site blood tests, urine analysis, ECG, and more. Partnered with trusted labs for quick turnaround.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💊</div>
+      <div class="service-name">Chronic Disease Management</div>
+      <p class="service-desc">Ongoing care plans for diabetes, hypertension, thyroid disorders, and other long-term conditions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤰</div>
+      <div class="service-name">Women's Health</div>
+      <p class="service-desc">Antenatal check-ups, PCOS management, menstrual health, and general gynaecological concerns.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💉</div>
+      <div class="service-name">Vaccinations</div>
+      <p class="service-desc">Government-approved immunisation schedules for children and adults. Travel vaccines also available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-left">
+    <div class="section-label">Meet the Doctor</div>
+    <h2 class="about-title">15 Years of <em>Healing</em> with Purpose</h2>
+    <p class="about-desc">
+      Dr. Priya Sharma completed her MBBS from Osmania Medical College and MD (General Medicine) from Nizam's Institute of Medical Sciences. She founded Sharma Family Clinic in 2009 with one belief: quality healthcare should be accessible to everyone.
+    </p>
+    <p class="about-desc" style="margin-bottom:0;">
+      Fluent in Telugu, Hindi, and English. She takes time to truly listen to every patient, explaining diagnoses clearly and involving families in care decisions.
+    </p>
+    <div class="credentials">
+      <div class="credential">
+        <div class="cred-icon">🎓</div>
+        <div>
+          <div class="cred-name">MBBS – Osmania Medical College</div>
+          <div class="cred-detail">Gold Medallist, Batch of 2004</div>
+        </div>
+      </div>
+      <div class="credential">
+        <div class="cred-icon">🏅</div>
+        <div>
+          <div class="cred-name">MD General Medicine – NIMS Hyderabad</div>
+          <div class="cred-detail">Specialisation in Chronic Disease Management</div>
+        </div>
+      </div>
+      <div class="credential">
+        <div class="cred-icon">🇮🇳</div>
+        <div>
+          <div class="cred-name">Registered with MCI / NMC</div>
+          <div class="cred-detail">Registration No. TG-12456-M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-quote">
+      "Every patient who walks through my door deserves to leave feeling heard, informed, and cared for."
+      <div class="about-quote-attr">— Dr. Priya Sharma</div>
+    </div>
+    <div>
+      <h4 style="color:rgba(255,255,255,0.5); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">Areas of Expertise</h4>
+      <div class="about-expertise">
+        <div class="exp-tag"><span class="exp-dot"></span>Diabetes Care</div>
+        <div class="exp-tag"><span class="exp-dot"></span>Hypertension</div>
+        <div class="exp-tag"><span class="exp-dot"></span>Paediatrics</div>
+        <div class="exp-tag"><span class="exp-dot"></span>Thyroid Disorders</div>
+        <div class="exp-tag"><span class="exp-dot"></span>Respiratory Care</div>
+        <div class="exp-tag"><span class="exp-dot"></span>Preventive Medicine</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMINGS & CONTACT -->
+<section class="timings-section" id="timings">
+  <div class="section-label">Visiting Hours</div>
+  <h2 class="section-title">When to Find <em>Us</em></h2>
+  <div class="timings-grid">
+    <div>
+      <table class="timing-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th style="text-align:right">Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Monday – Friday</td><td>9:00 AM – 1:00 PM, 5:00 PM – 9:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 2:00 PM</td></tr>
+          <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+          <tr><td style="color:var(--accent); font-weight:500">Emergency</td><td>Available on call 24/7</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:32px; padding:20px; background:var(--accent-light); border-radius:14px; border-left:4px solid var(--accent);">
+        <div style="font-weight:500; margin-bottom:6px;">📍 Location</div>
+        <div style="font-size:14px; color:var(--muted); line-height:1.7;">
+          12-3-456, Mehdipatnam Main Road,<br>
+          Near State Bank of India,<br>
+          Hyderabad, Telangana – 500028
+        </div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Book an Appointment</h3>
+      <div class="contact-item">
+        <div class="contact-item-icon">📱</div>
+        <div>
+          <div class="contact-label">Phone / WhatsApp</div>
+          <div class="contact-value">+91 98765 43210</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">dr.priya@sharmaclinic.in</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🗓️</div>
+        <div>
+          <div class="contact-label">Online Booking</div>
+          <div class="contact-value">Practo · Lybrate · Direct</div>
+        </div>
+      </div>
+      <div class="contact-map-placeholder">
+        📍 Google Maps Embed Here
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="reviews">
+  <div class="section-label">Patient Stories</div>
+  <h2 class="section-title">What Our Patients <em>Say</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Dr. Sharma caught my thyroid issue when two other doctors missed it. She takes time to explain everything. My family now only visits her."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">RK</div>
+        <div>
+          <div class="author-name">Ramesh Kumar</div>
+          <div class="author-detail">Patient since 2018 · Mehdipatnam</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Brought my 3-year-old during a bad fever. She was so gentle and patient. The child wasn't even scared. Best doctor in the area, no doubt."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">AP</div>
+        <div>
+          <div class="author-name">Anjali Patel</div>
+          <div class="author-detail">Patient since 2021 · Tolichowki</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"My diabetes is now well-controlled thanks to Dr. Priya's structured care plan. She's always available on WhatsApp for urgent questions."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">MS</div>
+        <div>
+          <div class="author-name">Mohammed Saleem</div>
+          <div class="author-detail">Patient since 2015 · Banjara Hills</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK CTA -->
+<section class="book-section" id="book" style="padding:80px;">
+  <div class="section-label">Ready to Visit?</div>
+  <h2 class="book-title">Your Health Journey Starts with One Step</h2>
+  <p class="book-desc">Walk in or book ahead. We'll make sure you're seen on time, every time.</p>
+  <div class="book-actions">
+    <a href="tel:+919876543210" class="btn-white">📞 Call Now</a>
+    <a href="https://wa.me/919876543210" class="btn-ghost">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dr. Priya Sharma · Sharma Family Clinic</div>
+  <div class="footer-note">© 2025 Sharma Family Clinic, Hyderabad. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Sitemap</a>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919876543210" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+
+</body>
+</html>
